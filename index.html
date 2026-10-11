@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fool in Love 应援站 · Copter × Bank</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E88AA6' d='M12 21s-6.7-4.3-9.3-8.5C.8 9.3 2.6 5.5 6 5.5c2 0 3.5 1.2 4.3 2.7l1.7 2.9 1.7-2.9c.8-1.5 2.3-2.7 4.3-2.7 3.4 0 5.2 3.8 3.3 7C18.7 16.7 12 21 12 21z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+:root{
+  --ink:#21302a;
+  --muted:#6d7871;
+  --teal:#0d2a25;
+  --teal2:#13342c;
+  --teal3:#1b4238;
+  --mint:#5fc3a2;
+  --mint-soft:#c9ecde;
+  --rose:#e88aa6;
+  --rose-soft:#f8ccd9;
+  --amber:#d9a05b;
+  --gold:#f0c674;
+  --cream:#f7f2e7;
+  --cream2:#efe9db;
+  --card:#fffdf8;
+  --line:rgba(13,42,37,.1);
+  --shadow:0 10px 30px rgba(13,42,37,.07);
+  --shadow-lg:0 24px 60px rgba(13,42,37,.15);
+  --radius:18px;
+  --radius-lg:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.serif{font-family:"Noto Serif SC",Georgia,"Songti SC",serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ===== 顶部导航 ===== */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  background:linear-gradient(180deg,rgba(9,27,23,.97),rgba(13,42,37,.9));
+  backdrop-filter:blur(12px);
+  color:var(--cream);padding:14px max(18px,4vw);
+  display:flex;align-items:center;gap:22px;
+  box-shadow:0 1px 0 rgba(255,255,255,.06);
+}
+.nav .brand{display:flex;align-items:center;gap:11px;margin-right:auto;font-weight:700;letter-spacing:.6px}
+.nav .brand svg{width:21px;height:21px;filter:drop-shadow(0 2px 6px rgba(232,138,166,.5))}
+.nav .links{display:flex;gap:22px;font-size:14px}
+.nav .links a{opacity:.82;position:relative;transition:opacity .2s,color .2s;padding:4px 0}
+.nav .links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--mint);border-radius:2px;transition:width .25s ease}
+.nav .links a:hover{opacity:1;color:var(--mint)}
+.nav .links a:hover::after{width:100%}
+@media(max-width:560px){
+  .nav .links{gap:16px;font-size:13px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+  .nav .links::-webkit-scrollbar{display:none}
+}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;color:var(--cream);
+  background:
+    radial-gradient(900px 520px at 84% 10%,rgba(95,195,162,.30),transparent 62%),
+    radial-gradient(720px 500px at 6% 90%,rgba(232,138,166,.18),transparent 55%),
+    linear-gradient(135deg,#0a211d 0%,#12372e 58%,#1d4a3f 100%);
+  padding:140px 6vw 72px;
+  overflow:hidden;
+}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:26px 26px;
+  opacity:.5}
+.hero .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;position:relative}
+@media(min-width:820px){.hero .grid{grid-template-columns:1.08fr .92fr;gap:52px}}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:13px;letter-spacing:2.5px;color:var(--mint);
+  border:1px solid rgba(95,195,162,.45);border-radius:999px;
+  padding:7px 15px;margin-bottom:20px;background:rgba(95,195,162,.07);
+}
+.hero .kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--rose);box-shadow:0 0 8px rgba(232,138,166,.8)}
+.hero h1{
+  font-family:"Noto Serif SC",serif;font-size:clamp(42px,9vw,86px);line-height:1.05;font-weight:900;letter-spacing:1px;
+  background:linear-gradient(160deg,#fffef8 18%,#cfe9dd 72%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h1 em{font-style:italic;font-weight:400;-webkit-text-fill-color:var(--rose-soft);color:var(--rose-soft);
+  font-family:"Cormorant Garamond","Noto Serif SC",serif}
+.hero .sub{margin-top:12px;font-family:"Noto Serif SC",serif;font-size:clamp(16px,2.4vw,22px);color:#d9e9e2}
+.hero .sub b{color:var(--rose-soft);font-weight:700}
+.hero .desc{margin-top:20px;max-width:50ch;color:#cdded6;font-weight:300;font-size:15.5px;line-height:1.9}
+.hero .cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:15px;font-weight:600;cursor:pointer;
+  border-radius:999px;padding:13px 24px;border:none;
+  transition:transform .18s,box-shadow .25s,background .25s;
+}
+.btn svg{width:16px;height:16px}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:linear-gradient(135deg,var(--mint),#7fd4b6);color:#0d241f;box-shadow:0 8px 22px rgba(95,195,162,.35)}
+.btn-primary:hover{box-shadow:0 14px 30px rgba(95,195,162,.5)}
+.btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:var(--rose-soft);color:var(--rose-soft)}
+.hero .figure{
+  border-radius:22px;overflow:hidden;position:relative;
+  box-shadow:0 36px 74px rgba(0,0,0,.46), inset 0 0 0 1px rgba(255,255,255,.14);
+}
+.hero .figure::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 46px rgba(255,255,255,.07)}
+.hero .figure img{width:100%;height:auto;object-fit:cover}
+.hero .badge{
+  position:absolute;left:16px;bottom:16px;
+  background:rgba(9,27,23,.72);backdrop-filter:blur(6px);color:var(--mint-soft);
+  font-size:12px;letter-spacing:1.5px;padding:7px 15px;border-radius:999px;
+  border:1px solid rgba(95,195,162,.4);
+}
+@media(max-width:820px){
+  .hero{padding:120px 6vw 50px}
+  .hero .figure{margin-top:6px}
+}
+
+/* ===== Section 通用 ===== */
+section{padding:76px 6vw;position:relative}
+@media(min-width:820px){section{padding:100px 6vw}}
+.wrap{max-width:1180px;margin:0 auto}
+.sec-head{margin-bottom:44px;max-width:640px}
+.sec-head .tag{
+  display:inline-flex;align-items:center;gap:9px;
+  color:var(--mint);font-size:12.5px;letter-spacing:3px;font-weight:700;
+}
+.sec-head .tag::before{content:"";width:24px;height:2px;background:linear-gradient(90deg,var(--mint),transparent);border-radius:2px}
+.sec-head h2{font-family:"Noto Serif SC",serif;font-size:clamp(27px,4vw,40px);font-weight:900;margin-top:12px;letter-spacing:.5px}
+.sec-head p{margin-top:14px;color:var(--muted);font-weight:300;font-size:15.5px;line-height:1.9}
+
+/* ===== 剧情简介 ===== */
+.about{background:linear-gradient(180deg,var(--cream),#f3eddf)}
+.about .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:760px){.about .cols{grid-template-columns:repeat(3,1fr)}}
+.fact{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.fact:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.fact .icon{width:42px;height:42px;border-radius:13px;background:rgba(95,195,162,.13);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.fact .icon svg{width:21px;height:21px;stroke:var(--mint);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fact .k{font-size:12px;letter-spacing:2px;color:var(--mint);font-weight:700}
+.fact .v{margin-top:7px;font-size:17px;font-weight:700;font-family:"Noto Serif SC",serif;letter-spacing:.3px}
+.fact .d{margin-top:6px;font-size:13.5px;color:var(--muted);font-weight:300;line-height:1.7}
+.synopsis{
+  margin-top:30px;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,var(--teal),var(--teal3));
+  color:#e9f2ed;padding:32px 34px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.synopsis::before{content:"";position:absolute;right:-70px;top:-70px;width:250px;height:250px;background:radial-gradient(circle,rgba(95,195,162,.28),transparent 70%)}
+.synopsis::after{content:"";position:absolute;left:-40px;bottom:-80px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,138,166,.18),transparent 70%)}
+.synopsis h3{font-family:"Noto Serif SC",serif;font-size:21px;margin-bottom:14px;color:var(--mint-soft);position:relative}
+.synopsis p{max-width:72ch;font-weight:300;font-size:15.5px;line-height:2;position:relative}
+
+/* ===== 主演 ===== */
+.cast{background:linear-gradient(180deg,var(--teal),#0f3029)}
+.cast .sec-head .tag{color:var(--mint)}
+.cast .sec-head p{color:#b7ccc2}
+.cast-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:900px){.cast-grid{grid-template-columns:repeat(2,1fr)}}
+.cast-card{
+  background:linear-gradient(180deg,var(--teal2),var(--teal3));
+  border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:var(--shadow-lg);transition:transform .3s,box-shadow .3s;
+}
+.cast-card:hover{transform:translateY(-6px);box-shadow:0 34px 80px rgba(0,0,0,.4)}
+.cast-card .photo{aspect-ratio:3/4;overflow:hidden;position:relative}
+.cast-card .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,42,37,0) 60%,rgba(13,42,37,.5))}
+.cast-card .photo img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s ease}
+.cast-card:hover .photo img{transform:scale(1.05)}
+.cast-card .role-badge{
+  position:absolute;left:16px;top:16px;z-index:2;
+  padding:7px 14px;background:rgba(9,27,23,.6);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;
+  color:var(--rose-soft);font-size:12px;letter-spacing:1.5px;font-weight:600;
+}
+.cast-card .body{padding:24px 26px 28px;position:relative}
+.cast-card h3{font-family:"Noto Serif SC",serif;font-size:26px;font-weight:900;letter-spacing:.5px}
+.cast-card .en{font-size:12.5px;color:#8fa89e;letter-spacing:.5px;margin-top:4px}
+.cast-card ul{list-style:none;margin-top:16px}
+.cast-card li{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.09);font-size:14.5px;color:#d9e6df;font-weight:300;line-height:1.6}
+.cast-card li:last-child{border-bottom:none}
+.cast-card li b{flex:0 0 74px;color:var(--mint-soft);font-weight:600;font-size:13.5px}
+
+/* ===== 相册 Gallery ===== */
+.gallery{background:linear-gradient(180deg,#f0ede3,var(--cream))}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:760px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+.g-item{
+  position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/4;
+  border:1px solid rgba(13,42,37,.07);box-shadow:var(--shadow);
+  transition:transform .3s,box-shadow .3s;
+}
+.g-item:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.g-item:hover img{transform:scale(1.06)}
+.g-item .cap{
+  position:absolute;inset:auto 0 0 0;padding:36px 16px 13px;
+  background:linear-gradient(transparent,rgba(13,42,37,.82));
+  color:#fff;font-size:13px;letter-spacing:.8px;font-weight:400;
+  opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;
+}
+.g-item:hover .cap{opacity:1;transform:none}
+
+/* ===== 应援物切换 ===== */
+.cheer-switch{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px;margin-top:26px;box-shadow:var(--shadow)}
+.cheer-switch .seg{font-size:13.5px;font-weight:600;padding:9px 22px;border-radius:999px;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background .2s,color .2s}
+.cheer-switch .seg.on{background:linear-gradient(135deg,var(--mint),#7fd4b6);color:#0d241f;box-shadow:0 4px 14px rgba(95,195,162,.35)}
+
+/* ===== Lightbox ===== */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(8,22,18,.94);display:none;align-items:center;justify-content:center;padding:5vw;backdrop-filter:blur(6px)}
+.lightbox.open{display:flex}
+.lightbox figure{max-width:min(900px,92vw)}
+.lightbox img{max-height:80vh;width:auto;margin:0 auto;border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.lightbox figcaption{color:#cfe0d8;font-size:14px;text-align:center;margin-top:16px;font-weight:300}
+.lightbox .close,.lightbox .arrow{background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;transition:background .2s,transform .2s}
+.lightbox .close{position:absolute;top:22px;right:26px;font-size:20px;width:48px;height:48px;border-radius:50%}
+.lightbox .close:hover{background:rgba(232,138,166,.4);transform:rotate(90deg)}
+.lightbox .arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;font-size:22px}
+.lightbox .arrow:hover{background:rgba(95,195,162,.45);transform:translateY(-50%) scale(1.06)}
+.lightbox .prev{left:20px}
+.lightbox .next{right:20px}
+
+/* ===== 应援区 ===== */
+.cheer{background:linear-gradient(180deg,#0f3029,var(--teal));color:var(--cream);text-align:center;overflow:hidden}
+.cheer::before{content:"";position:absolute;left:50%;top:-140px;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(95,195,162,.24),transparent 65%)}
+.cheer::after{content:"";position:absolute;right:8%;bottom:12%;width:160px;height:160px;background:radial-gradient(circle,rgba(232,138,166,.14),transparent 70%)}
+.cheer .wrap{position:relative}
+.cheer h2{font-family:"Noto Serif SC",serif;font-size:clamp(30px,5vw,48px);font-weight:900;letter-spacing:.5px}
+.cheer h2 em{font-style:normal;color:var(--rose-soft)}
+.cheer .line{color:#b9ccc2;font-weight:300;margin-top:16px;font-size:15.5px}
+.cheer-tools{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:34px}
+@media(min-width:600px){.cheer-tools{flex-direction:row;justify-content:center;gap:24px}}
+.lamp-counter{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:12px 26px;
+  backdrop-filter:blur(6px);
+}
+.lamp-counter b{font-size:30px;color:var(--mint-soft);font-variant-numeric:tabular-nums;font-family:"Noto Serif SC",serif}
+.lamp-counter span{font-size:13.5px;color:#a9beb5}
+.hashtags{display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin-top:30px}
+.hashtags .tag{font-size:13px;color:var(--mint-soft);border:1px solid rgba(95,195,162,.4);border-radius:999px;padding:8px 18px;background:rgba(95,195,162,.08);transition:background .2s,border-color .2s;cursor:default}
+.hashtags .tag:hover{background:rgba(95,195,162,.18);border-color:var(--mint)}
+
+/* ===== 页脚 ===== */
+footer{background:#071c18;color:#7fa39a;padding:38px 6vw;font-size:12.5px;font-weight:300;line-height:2}
+footer .wrap{display:flex;flex-direction:column;gap:6px;max-width:1180px;margin:0 auto}
+footer .brandline{display:flex;align-items:center;gap:8px}
+footer .brandline svg{width:15px;height:15px}
+footer b{color:#bcd0c5;font-weight:600}
+
+/* ===== Toast ===== */
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:linear-gradient(135deg,var(--mint),#7fd4b6);color:#0d241f;font-weight:600;font-size:14px;padding:13px 24px;border-radius:999px;opacity:0;pointer-events:none;transition:all .3s ease;z-index:120;box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== 应援物选择 Modal ===== */
+.modal{position:fixed;inset:0;z-index:130;background:rgba(8,22,18,.86);display:flex;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(8px)}
+.modal.hidden{display:none}
+.modal-card{
+  background:linear-gradient(170deg,var(--teal2),var(--teal3));
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);
+  color:var(--cream);padding:36px 30px;max-width:440px;width:100%;text-align:center;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);animation:cardIn .45s cubic-bezier(.2,.9,.3,1.2);
+  position:relative;overflow:hidden;
+}
+.modal-card::before{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(95,195,162,.25),transparent 70%)}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}
+.modal-card h3{font-family:"Noto Serif SC",serif;font-size:26px;font-weight:900;letter-spacing:.5px;position:relative}
+.modal-card .tip{color:#a9beb5;font-size:14px;font-weight:300;margin-top:12px;line-height:1.8;position:relative}
+.modal-choices{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;position:relative}
+.choice{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:18px;
+  padding:22px 12px;cursor:pointer;transition:transform .2s,border-color .2s,background .25s;color:var(--cream);
+}
+.choice:hover{transform:translateY(-4px);border-color:var(--rose-soft);background:rgba(232,138,166,.14);box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.choice svg{width:40px;height:40px;margin:0 auto 12px;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
+.choice .n{font-weight:700;font-size:16px;letter-spacing:.5px}
+.choice .d{font-size:12px;color:#a9beb5;margin-top:5px;font-weight:300}
+
+/* ===== 应援动画（全屏，点哪砸哪） ===== */
+.fx-layer{position:fixed;inset:0;z-index:140;pointer-events:none;overflow:hidden}
+.fx-splat{position:absolute;transform:translate(-50%,-50%);opacity:0;animation:splat .72s ease-out forwards}
+@keyframes splat{0%{opacity:1;transform:translate(-50%,-50%) translate(0,0) rotate(0) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(var(--sc,.55))}}
+.fx-egg-shell{width:20px;height:20px}
+.fx-white{background:rgba(255,253,244,.92);border:1px solid rgba(226,213,185,.5);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.fx-yolk{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffcf6b,#e9911e);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.flower-pop{position:absolute;transform:translate(-50%,-50%);animation:bloom .45s cubic-bezier(.34,1.5,.64,1) forwards;filter:drop-shadow(0 6px 16px rgba(231,116,148,.5))}
+@keyframes bloom{0%{transform:translate(-50%,-50%) scale(.15) rotate(-24deg);opacity:0}55%{opacity:1}100%{transform:translate(-50%,-50%) scale(1) rotate(0);opacity:1}}
+.fx-petal{animation:petalFly 1.25s ease-out forwards;background:radial-gradient(circle at 32% 28%, #fff, #f7a9c1, #ef7faa);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+@keyframes petalFly{0%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(.8)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot)) scale(.95)}}
+.fx-spark{animation:sparkFly .9s ease-out forwards}
+@keyframes sparkFly{0%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot)) scale(.15)}}
+
+/* ===== 扇巴掌小游戏 ===== */
+.slap{background:linear-gradient(180deg,var(--cream),#f3eddf);text-align:center;overflow:hidden}
+.slap .sec-head{max-width:none;margin-left:auto;margin-right:auto}
+.slap .sec-head .tag{justify-content:center}
+.slap-stage{max-width:520px;margin:6px auto 0;position:relative;display:flex;flex-direction:column;align-items:center;gap:22px}
+.slap-face{width:190px;height:190px;border-radius:50%;overflow:hidden;cursor:pointer;position:relative;border:4px solid var(--teal);box-shadow:var(--shadow-lg);transition:transform .15s,box-shadow .25s;background:var(--teal)}
+.slap-face:hover{box-shadow:0 32px 70px rgba(13,42,37,.3)}
+.slap-face:active{transform:scale(.95)}
+.slap-face img{width:100%;height:100%;object-fit:cover;object-position:top}
+.slap-face.shaken{animation:slapShake .42s cubic-bezier(.36,.07,.19,.97)}
+@keyframes slapShake{10%,90%{transform:translate(-2px,0)}20%,80%{transform:translate(3px,1px)}30%,70%{transform:translate(-4px,-1px)}40%,60%{transform:translate(4px,1px)}50%{transform:translate(-2px,0)}}
+.slap-emote{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:32px;letter-spacing:1px;pointer-events:none;opacity:0;transition:opacity .25s;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.slap-emote.show{opacity:1}
+.slap-red{position:absolute;right:30px;top:44%;width:46px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(232,60,60,.55),rgba(232,60,60,0) 70%);opacity:0;transition:opacity .18s;z-index:2;pointer-events:none}
+.slap-red.show{opacity:1}
+.slap-hand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;pointer-events:none;animation:slapDown .44s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes slapDown{0%{transform:translate(-50%,-50%) translate(46px,-50px) rotate(38deg) scale(.7);opacity:0}30%{opacity:1}52%{transform:translate(-50%,-50%) translate(0,0) rotate(2deg) scale(1.16);opacity:1}100%{transform:translate(-50%,-50%) translate(-12px,8px) rotate(12deg) scale(1.22);opacity:0}}
+.slap-hitword{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:4;font-family:"Noto Serif SC",serif;font-weight:900;font-size:46px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.5),0 0 0 3px rgba(13,42,37,.35);animation:slapWord .44s ease-out forwards;pointer-events:none}
+@keyframes slapWord{0%{transform:translate(-50%,-50%) scale(.4);opacity:0}25%{opacity:1;transform:translate(-50%,-50%) translate(0,-4px) scale(1.25)}100%{transform:translate(-50%,-50%) translate(0,-24px) scale(1);opacity:0}}
+.slap-counter{display:inline-flex;align-items:baseline;gap:8px;font-family:"Noto Serif SC",serif}
+.slap-counter b{font-size:34px;color:var(--rose);font-variant-numeric:tabular-nums}
+.slap-counter span{color:var(--muted);font-size:14px;font-weight:300}
+.slap-quip{min-height:26px;color:var(--muted);font-weight:300;font-size:15px}
+.slap-reset{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:13px;border-radius:999px;padding:8px 18px;cursor:pointer;transition:all .2s;font-family:inherit}
+.slap-reset:hover{color:var(--ink);border-color:var(--mint);transform:translateY(-1px)}
+
+/* ===== 摸胸肌小游戏 ===== */
+.muscle{background:linear-gradient(180deg,#f3eddf,var(--cream));text-align:center;overflow:hidden}
+.muscle .sec-head{max-width:none;margin-left:auto;margin-right:auto}
+.muscle .sec-head .tag{justify-content:center}
+.muscle-stage{max-width:520px;margin:6px auto 0;position:relative;display:flex;flex-direction:column;align-items:center;gap:20px}
+.muscle-face{width:230px;height:306px;border-radius:20px;overflow:hidden;cursor:pointer;position:relative;border:4px solid var(--teal);box-shadow:var(--shadow-lg);transition:transform .15s,box-shadow .25s;background:var(--teal)}
+.muscle-face:hover{box-shadow:0 32px 70px rgba(13,42,37,.3)}
+.muscle-face:active{transform:scale(.97)}
+.muscle-face img{width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .35s}
+.muscle-hand{position:absolute;z-index:3;pointer-events:none;animation:grabOnce .6s cubic-bezier(.2,.8,.3,1.2) forwards}
+@keyframes grabOnce{
+  0%{opacity:0;transform:translate(34px,-24px) rotate(42deg) scale(.6)}
+  22%{opacity:1}
+  38%{opacity:1;transform:translate(0,0) rotate(-6deg) scale(1.15)}
+  55%{opacity:1;transform:translate(0,0) rotate(-6deg) scale(.9)}
+  70%{opacity:1;transform:translate(0,0) rotate(-6deg) scale(1.06)}
+  100%{opacity:0;transform:translate(0,-6px) rotate(-6deg) scale(1)}
+}
+.muscle-heart{position:absolute;left:50%;top:24%;transform:translate(-50%,-50%);z-index:2;font-size:22px;color:var(--rose);pointer-events:none;opacity:0;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.muscle-heart.show{opacity:1;animation:heartBeat 1.3s ease infinite}
+@keyframes heartBeat{0%,100%{transform:translate(-50%,-50%) scale(1)}25%{transform:translate(-50%,-50%) scale(1.25)}40%{transform:translate(-50%,-50%) scale(1)}60%{transform:translate(-50%,-50%) scale(1.15)}}
+.muscle-counter{display:inline-flex;align-items:baseline;gap:8px;font-family:"Noto Serif SC",serif}
+.muscle-counter b{font-size:32px;color:var(--rose);font-variant-numeric:tabular-nums}
+.muscle-counter span{color:var(--muted);font-size:14px;font-weight:300}
+.muscle-quip{min-height:26px;color:var(--muted);font-weight:300;font-size:15px}
+.muscle-reset{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:13px;border-radius:999px;padding:8px 18px;cursor:pointer;transition:all .2s;font-family:inherit}
+.muscle-reset:hover{color:var(--ink);border-color:var(--rose);transform:translateY(-1px)}
+
+/* ===== 滚动揭示 ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero .figure,.hero .grid{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<nav class="nav">
+  <div class="brand">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E88AA6" d="M12 21s-6.7-4.3-9.3-8.5C.8 9.3 2.6 5.5 6 5.5c2 0 3.5 1.2 4.3 2.7l1.7 2.9 1.7-2.9c.8-1.5 2.3-2.7 4.3-2.7 3.4 0 5.2 3.8 3.3 7C18.7 16.7 12 21 12 21z"/></svg>
+    <span>Fool in Love 应援站</span>
+  </div>
+  <div class="links">
+    <a href="#about">剧情</a>
+    <a href="#cast">主演</a>
+    <a href="#gallery">相册</a>
+    <a href="#slap">扇巴掌</a>
+    <a href="#muscle">摸胸肌</a>
+    <a href="#cheer">应援</a>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="grid">
+    <div>
+      <span class="kicker">泰腐 · 2026 · iQIYI 独播</span>
+      <h1>Fool <em>in</em> Love</h1>
+      <p class="sub">《你却爱着一个他》泰剧版 · <b>简隋英 × 李玉</b></p>
+      <p class="desc">骄傲不羁的商业天才与温柔克制的昔日拳手，在曼谷的家族与商业旋涡里彼此纠缠。献给 Copter 与 Bank，也献给每个为这段感情心动的人。</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#gallery">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+          浏览美图
+        </a>
+        <a class="btn btn-ghost" href="#cheer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.7-4.3-9.3-8.5C.8 9.3 2.6 5.5 6 5.5c2 0 3.5 1.2 4.3 2.7l1.7 2.9 1.7-2.9c.8-1.5 2.3-2.7 4.3-2.7 3.4 0 5.2 3.8 3.3 7C18.7 16.7 12 21 12 21z"/></svg>
+          为 CP 打 call
+        </a>
+      </div>
+    </div>
+    <figure class="figure">
+      <img src="assets/hero.jpg" alt="Fool in Love 双男主特写，画面叠有 Fool in Love 字样">
+      <span class="badge">#CopterBank</span>
+    </figure>
+  </div>
+</header>
+
+<!-- ===== 剧情简介 ===== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag">ABOUT THE SHOW</div>
+      <h2>关于这部剧</h2>
+      <p>以曼谷豪门为舞台的强强拉扯，改编自水千丞高人气原耽《你却爱着一个他》。</p>
+    </div>
+    <div class="cols">
+      <div class="fact reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <div class="k">剧 名</div>
+        <div class="v">Fool in Love</div>
+        <div class="d">泰名 คนโง่รักเข(ล)า · 中译「你却爱着一个他」</div>
+      </div>
+      <div class="fact reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="k">播出信息</div>
+        <div class="v">2026.10.08 开播</div>
+        <div class="d">iQIYI 独播 · 全 20 集 · 每周更新</div>
+      </div>
+      <div class="fact reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3c1.8-1.2 4-1.5 6-1a8 8 0 0 1 2 13c-2 1.5-4 2.5-6 3v-2c1.6-.5 3-1.2 4-2.2"/><path d="M12 3c-1.8-1.2-4-1.5-6-1a8 8 0 0 0-2 13c2 1.5 4 2.5 6 3v-2c-1.6-.5-3-1.2-4-2.2"/><path d="M12 3v18"/></svg></div>
+        <div class="k">原 著</div>
+        <div class="v">水千丞作品</div>
+        <div class="d">《你却爱着一个他》，原耽人气篇目</div>
+      </div>
+    </div>
+    <div class="synopsis reveal">
+      <h3>剧情梗概</h3>
+      <p>简家的长子简隋英（Ing）骄傲张扬、商业上雷厉风行，耀眼成就却惹来同父异母弟弟的嫉恨；李家次子李玉（Yok）外表温润聪慧，却曾是顶着家族期望、压抑自我的职业拳手。两人在商界与家族的漩涡中相遇，从针锋相对到悄然心动，被卷入一场爱与恨交织的漫长纠缠。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 主演 ===== -->
+<section class="cast" id="cast">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag">THE CAST</div>
+      <h2>双主演 · Copter × Bank</h2>
+      <p>首度搭档的两位男主，一个霸道一个温润，撑起这段强强纠葛。</p>
+    </div>
+    <div class="cast-grid">
+      <article class="cast-card reveal">
+        <div class="photo">
+          <img src="assets/bank_gold.jpg" alt="Bank Artit 金色背景时尚人像">
+          <span class="role-badge">饰演 Ing · 简隋英</span>
+        </div>
+        <div class="body">
+          <h3>Bank Artit</h3>
+          <p class="en">อาทิตย์ ตั้งวิบูลย์พาณิชย์ · 银行哥</p>
+          <ul>
+            <li><b>生日</b>1990.09.23</li>
+            <li><b>身高</b>180 cm</li>
+            <li><b>出身</b>泰国叻丕府 · 兰实大学</li>
+            <li><b>代表作</b>《立方体》《爱的束缚》《密码猎人》</li>
+            <li><b>剧中印象</b>骄傲不羁的商业天才，爱猫爱篮球的阳光直球</li>
+          </ul>
+        </div>
+      </article>
+      <article class="cast-card reveal">
+        <div class="photo">
+          <img src="assets/copter_slap.png" alt="Copter Nuntapong 街头随拍">
+          <span class="role-badge">饰演 Yok · 李玉</span>
+        </div>
+        <div class="body">
+          <h3>Copter Nuntapong</h3>
+          <p class="en">นันทพงศ์ วงศ์สกุลยง · 奶窝</p>
+          <ul>
+            <li><b>生日</b>1999.09.11</li>
+            <li><b>出身</b>泰国 · 诗纳卡琳威洛大学</li>
+            <li><b>履历</b>男团 SBFIVE 成员</li>
+            <li><b>代表作</b>《逐月之月》Kitkat</li>
+            <li><b>剧中印象</b>温柔克制、深藏锋芒的前职业拳手</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 相册 ===== -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag">GALLERY</div>
+      <h2>美图相册</h2>
+      <p>点击任意一张放大查看，同时为你喜欢的 CP 砸鸡蛋或送鲜花。</p>
+    </div>
+    <div class="cheer-switch reveal" role="group" aria-label="切换应援物">
+      <button class="seg" data-weapon="egg">砸鸡蛋</button>
+      <button class="seg" data-weapon="flower">送鲜花</button>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-item reveal">
+        <img src="assets/couple_bw1.jpg" alt="Copter 与 Bank 黑白双人剧照，情绪互动">
+        <figcaption class="cap">双人剧照 · 黑白情绪</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/bank_social_1.jpg" alt="Bank Artit 片场户外照，安全帽黑风衣">
+        <figcaption class="cap">Bank Artit · 片场随拍</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/copter_slap.png" alt="Copter Nuntapong 街头随拍">
+        <figcaption class="cap">Copter Nuntapong · 街头随拍</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/copter_sleep.png" alt="Copter Nuntapong 橄榄绿衬衫睡眠日常">
+        <figcaption class="cap">Copter Nuntapong · 睡眠日常</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/copter_glasses.png" alt="Copter Nuntapong 黑框眼镜脸部特写">
+        <figcaption class="cap">Copter Nuntapong · 眼镜特写</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/couple_bw2.jpg" alt="Copter 与 Bank 黑白双人剧照，近距离相拥">
+        <figcaption class="cap">双人剧照 · 亲密相拥</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/bank_gold.jpg" alt="Bank Artit 金色背景时尚人像">
+        <figcaption class="cap">Bank Artit · 金色质感</figcaption>
+      </figure>
+      <figure class="g-item reveal">
+        <img src="assets/bank_slap.png" alt="Bank Artit 闭眼休憩">
+        <figcaption class="cap">Bank Artit · 闭眼休憩</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 应援 ===== -->
+<section class="cheer" id="cheer">
+  <div class="wrap">
+    <h2 class="reveal">为这段傻瓜爱情<em>应援</em></h2>
+    <p class="line reveal">点一盏灯牌，告诉 Copter 与 Bank：有人在认真喜欢你们的故事。</p>
+    <div class="cheer-tools reveal">
+      <div class="lamp-counter">
+        <b id="lampCount">2026</b>
+        <span>盏灯牌已点亮</span>
+      </div>
+      <button class="btn btn-primary" id="lampBtn" aria-label="点亮灯牌为 CP 应援">点亮灯牌</button>
+    </div>
+    <div class="hashtags reveal">
+      <span class="tag">#泰剧foolinlove</span>
+      <span class="tag">#CopterBank</span>
+      <span class="tag">#你却爱着一个他</span>
+      <span class="tag">#Fool in Love</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 扇巴掌小游戏 ===== -->
+<section class="slap" id="slap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag">MINI GAME · 番外</div>
+      <h2>扇李玉巴掌</h2>
+      <p>替简隋英出出气？点一下李玉的脸，扇他一巴掌——纯玩梗，Copter 本人可没得罪你。</p>
+    </div>
+    <div class="slap-stage reveal">
+      <div class="slap-face" id="slapFace" role="button" tabindex="0" aria-label="扇李玉巴掌小游戏，点击扇巴掌">
+        <img src="assets/copter_glasses.png" alt="李玉（Copter Nuntapong 饰演）">
+        <div class="slap-red" id="slapRed"></div>
+        <div class="slap-emote" id="slapEmote"></div>
+      </div>
+      <div class="slap-counter">已扇 <b id="slapNum">0</b> <span>巴掌</span></div>
+      <p class="slap-quip" id="slapQuip">来，第一巴掌请。</p>
+      <button class="slap-reset" id="slapReset">重置巴掌数</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 摸胸肌小游戏 ===== -->
+<section class="muscle" id="muscle">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag">MINI GAME · 番外</div>
+      <h2>摸简隋英胸肌</h2>
+      <p>点一下简隋英，衣服一解就露出胸肌——再点就是摸摸摸。纯玩梗，Bank 真人可是衣冠楚楚的绅士。</p>
+    </div>
+    <div class="muscle-stage reveal">
+      <div class="muscle-face" id="muscleFace" role="button" tabindex="0" aria-label="摸简隋英胸肌小游戏，点击触发">
+        <img id="muscleImg" src="assets/bank_dressed.png" alt="简隋英（Bank Artit 饰演）穿好衣服">
+        <div class="muscle-heart" id="muscleHeart">♡</div>
+      </div>
+      <img src="assets/bank_muscle.png" alt="" style="display:none" aria-hidden="true">
+      <div class="muscle-counter">摸了 <b id="muscleNum">0</b> <span>下</span></div>
+      <p class="muscle-quip" id="muscleQuip">来，摸第一下。</p>
+      <button class="muscle-reset" id="muscleReset">穿回衣服</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="wrap">
+    <div class="brandline"><svg viewBox="0 0 24 24"><path fill="#E88AA6" d="M12 21s-6.7-4.3-9.3-8.5C.8 9.3 2.6 5.5 6 5.5c2 0 3.5 1.2 4.3 2.7l1.7 2.9 1.7-2.9c.8-1.5 2.3-2.7 4.3-2.7 3.4 0 5.2 3.8 3.3 7C18.7 16.7 12 21 12 21z"/></svg><b>Fool in Love 应援站</b> · Copter × Bank 中文粉丝站（非官方）</div>
+    <div>图片来源网络公开渠道，版权归剧方、经纪公司及原作者所有；文字资料整理自公开报道，仅供交流与安利，请以正版剧集为准。</div>
+    <div>为爱发电 · 请支持正版，尊重演员与作品。</div>
+  </div>
+</footer>
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片放大查看">
+  <button class="close" id="lbClose" aria-label="关闭">×</button>
+  <button class="arrow prev" id="lbPrev" aria-label="上一张">‹</button>
+  <button class="arrow next" id="lbNext" aria-label="下一张">›</button>
+  <figure>
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== 全屏应援动画层 ===== -->
+<div class="fx-layer" id="fxLayer"></div>
+
+<!-- ===== 应援物选择 ===== -->
+<div class="modal" id="cheerModal" role="dialog" aria-modal="true" aria-label="请选择应援物">
+  <div class="modal-card">
+    <h3 class="serif">请选择你的应援物</h3>
+    <p class="tip">选好后，点击任意一张美图，就能为 Copter × Bank 砸鸡蛋或送鲜花。</p>
+    <div class="modal-choices">
+      <button class="choice" data-weapon="egg" id="pickEgg">
+        <svg viewBox="0 0 40 52"><path d="M20 2 C29 14 32 30 26 43 C21 52 19 52 14 43 C8 30 11 14 20 2 Z" fill="#fff9ec" stroke="#e5d3ae" stroke-width="2"/></svg>
+        <div class="n">砸鸡蛋</div>
+        <div class="d">不给面子就砸你鸡蛋</div>
+      </button>
+      <button class="choice" data-weapon="flower" id="pickFlower">
+        <svg viewBox="0 0 40 40"><g fill="#f4a7b5" stroke="#e5849a" stroke-width="1"><ellipse cx="20" cy="8" rx="7" ry="10"/><ellipse cx="20" cy="32" rx="7" ry="10"/><ellipse cx="8" cy="20" rx="10" ry="7"/><ellipse cx="32" cy="20" rx="10" ry="7"/></g><circle cx="20" cy="20" r="7" fill="#d9a05b"/></svg>
+        <div class="n">送鲜花</div>
+        <div class="d">喜欢就送一束花</div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---- Toast ---- */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+
+  /* ---- 应援物（砸鸡蛋 / 送鲜花） ---- */
+  var weapon = 'egg';
+  var cheerModal = document.getElementById('cheerModal');
+  var savedWeapon = sessionStorage.getItem('fil_weapon');
+
+  function syncWeaponUI(){
+    var segs = document.querySelectorAll('.cheer-switch .seg');
+    for(var i=0;i<segs.length;i++){
+      segs[i].classList.toggle('on', segs[i].getAttribute('data-weapon') === weapon);
+    }
+  }
+  function setWeapon(w){
+    weapon = w;
+    sessionStorage.setItem('fil_weapon', w);
+    cheerModal.classList.add('hidden');
+    syncWeaponUI();
+  }
+  if(savedWeapon){
+    weapon = savedWeapon;
+    cheerModal.classList.add('hidden');
+    syncWeaponUI();
+  }
+  document.getElementById('pickEgg').addEventListener('click', function(){
+    setWeapon('egg'); showToast('已选「砸鸡蛋」，点张图试试');
+  });
+  document.getElementById('pickFlower').addEventListener('click', function(){
+    setWeapon('flower'); showToast('已选「送鲜花」，点张图试试');
+  });
+  var switchSegs = document.querySelectorAll('.cheer-switch .seg');
+  for(var s=0;s<switchSegs.length;s++){
+    (function(seg){
+      seg.addEventListener('click', function(){
+        setWeapon(seg.getAttribute('data-weapon'));
+        showToast('切换为「' + (seg.getAttribute('data-weapon')==='egg' ? '砸鸡蛋' : '送鲜花') + '」');
+      });
+    })(switchSegs[s]);
+  }
+
+  /* ---- 应援动画（全屏：点哪砸哪） ---- */
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+  function playAt(x,y){
+    if(weapon === 'egg'){ playEgg(x,y); } else { playFlower(x,y); }
+  }
+  function makeSplat(layer,cls,x,y,dx,dy,rot,sc){
+    var el = document.createElement('div');
+    el.className = 'fx-splat ' + cls;
+    el.style.left = x + 'px'; el.style.top = y + 'px';
+    el.style.setProperty('--dx', dx + 'px');
+    el.style.setProperty('--dy', dy + 'px');
+    el.style.setProperty('--rot', rot + 'deg');
+    el.style.setProperty('--sc', sc);
+    layer.appendChild(el);
+    return el;
+  }
+  function playEgg(x,y){
+    var layer = document.getElementById('fxLayer');
+    var shells = [
+      '<svg viewBox="0 0 26 26" style="width:22px;height:22px"><path d="M3 2 C14 0 22 8 22 18 C12 16 4 12 3 4 Z" fill="#f0e6c8" stroke="#cfbf98" stroke-width="1.5"/><path d="M3 4 C4 12 12 16 22 18" stroke="#f8e6b0" stroke-width="3" fill="none"/></svg>',
+      '<svg viewBox="0 0 26 26" style="width:22px;height:22px"><path d="M2 14 C8 4 18 2 23 10 C16 22 6 24 2 14 Z" fill="#efe5c6" stroke="#cfbf98" stroke-width="1.5"/><path d="M6 18 C12 12 18 8 23 10" stroke="#f8e6b0" stroke-width="3" fill="none"/></svg>',
+      '<svg viewBox="0 0 26 26" style="width:22px;height:22px"><path d="M4 18 C10 14 18 10 22 8 C20 18 14 24 4 18 Z" fill="#f1e7ca" stroke="#cfbf98" stroke-width="1.5"/></svg>'
+    ];
+    for(var s=0;s<3;s++){
+      var sh = makeSplat(layer,'fx-egg-shell',x,y, rand(-95,95), rand(-90,40), rand(-240,240), rand(0.5,0.9));
+      sh.innerHTML = shells[s];
+    }
+    for(var w=0;w<4;w++){
+      var wh = makeSplat(layer,'fx-white',x,y, rand(-70,70), rand(-100,50), rand(-200,200), rand(0.7,1.1));
+      wh.style.width = rand(10,18)+'px'; wh.style.height = rand(7,13)+'px';
+      wh.style.borderRadius = rand(40,60)+'% '+rand(40,60)+'% '+rand(40,60)+'% '+rand(40,60)+'% / '+rand(40,60)+'% '+rand(40,60)+'% '+rand(40,60)+'% '+rand(40,60)+'%';
+    }
+    for(var k=0;k<2;k++){
+      makeSplat(layer,'fx-yolk',x,y, rand(-55,55), rand(-75,60), rand(-180,180), rand(0.8,1.05));
+    }
+    setTimeout(function(){ layer.innerHTML=''; }, 820);
+  }
+  function flowerSVG(){
+    var petals = '';
+    for(var i=0;i<8;i++){
+      petals += '<ellipse cx="20" cy="9" rx="6.5" ry="11" fill="rgba(244,158,182,.95)" stroke="#e07d9c" stroke-width="0.6" transform="rotate('+(i*45)+' 20 20)"/>';
+    }
+    return '<svg viewBox="0 0 40 40" style="width:56px;height:56px">' +
+      '<ellipse cx="11" cy="31" rx="8" ry="5" fill="#7fbf7f" transform="rotate(-28 11 31)"/>' +
+      '<ellipse cx="30" cy="31" rx="8" ry="5" fill="#6fb06f" transform="rotate(28 30 31)"/>' +
+      petals +
+      '<circle cx="20" cy="20" r="4.6" fill="#ffd24a"/>' +
+      '<circle cx="20" cy="20" r="2.2" fill="#e9a825"/>' +
+      '</svg>';
+  }
+  function spark(layer,x,y){
+    var s = document.createElement('div'); s.className = 'fx-splat fx-spark';
+    s.style.left = x + 'px'; s.style.top = y + 'px';
+    s.innerHTML = '<svg viewBox="0 0 24 24" style="width:'+rand(10,20)+'px;height:'+rand(10,20)+'px"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffe98a"/></svg>';
+    s.style.setProperty('--dx', rand(-120,120)+'px');
+    s.style.setProperty('--dy', rand(-135,115)+'px');
+    s.style.setProperty('--rot', rand(-180,180)+'deg');
+    layer.appendChild(s);
+  }
+  function playFlower(x,y){
+    var layer = document.getElementById('fxLayer');
+    var pop = document.createElement('div'); pop.className = 'flower-pop';
+    pop.style.left = x + 'px'; pop.style.top = y + 'px';
+    pop.innerHTML = flowerSVG();
+    layer.appendChild(pop);
+    setTimeout(function(){
+      pop.remove();
+      for(var i=0;i<10;i++){
+        var p = document.createElement('div'); p.className = 'fx-splat fx-petal';
+        p.style.left = x + 'px'; p.style.top = y + 'px';
+        p.style.width = rand(12,20)+'px'; p.style.height = rand(18,26)+'px';
+        p.style.setProperty('--dx', rand(-160,160)+'px');
+        p.style.setProperty('--dy', rand(-150,125)+'px');
+        p.style.setProperty('--rot', rand(-420,420)+'deg');
+        layer.appendChild(p);
+      }
+      for(var j=0;j<12;j++){ spark(layer,x,y); }
+      setTimeout(function(){ layer.innerHTML=''; }, 1400);
+    }, 480);
+  }
+
+  /* ---- 全屏点击应援：点哪砸哪 ---- */
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.lightbox')) return;
+    if(e.target.closest('.modal')) return;
+    if(e.target.closest('button')) return;
+    if(e.target.closest('.slap-face')) return;
+    if(e.target.closest('.muscle-face')){ playMuscle(e.clientX, e.clientY); return; }
+    playAt(e.clientX, e.clientY);
+  });
+
+  /* ---- 灯牌应援 ---- */
+  var count = 2026;
+  var countEl = document.getElementById('lampCount');
+  document.getElementById('lampBtn').addEventListener('click', function(){
+    count += 1;
+    countEl.textContent = count;
+    showToast('已为 Copter × Bank 点亮第 ' + count + ' 盏灯牌');
+  });
+
+  /* ---- Lightbox 相册放大 ---- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var current = 0;
+
+  function openAt(i){
+    current = i;
+    var item = items[i];
+    lbImg.src = item.querySelector('img').getAttribute('src');
+    lbImg.alt = item.querySelector('img').getAttribute('alt');
+    lbCap.textContent = item.querySelector('.cap').textContent;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  function step(d){ openAt((current + d + items.length) % items.length); }
+
+  items.forEach(function(item, i){
+    item.addEventListener('click', function(){ openAt(i); });
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(){ step(-1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ step(1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') step(-1);
+    if(e.key === 'ArrowRight') step(1);
+  });
+
+  /* ---- 扇李玉巴掌小游戏 ---- */
+  var slapFace = document.getElementById('slapFace');
+  var slapNum = 0;
+  var slapNumEl = document.getElementById('slapNum');
+  var slapEmote = document.getElementById('slapEmote');
+  var slapRed = document.getElementById('slapRed');
+  var slapQuip = document.getElementById('slapQuip');
+  var slapHandSVG = '<svg viewBox="0 0 52 52" style="width:112px;height:112px"><g fill="#f0c9a4" stroke="#d9a877" stroke-width="1.4"><ellipse cx="26" cy="16" rx="6" ry="13"/><ellipse cx="17" cy="19" rx="6" ry="12" transform="rotate(-22 17 19)"/><ellipse cx="36" cy="19" rx="6" ry="12" transform="rotate(22 36 19)"/><ellipse cx="10" cy="25" rx="5" ry="11" transform="rotate(-42 10 25)"/><ellipse cx="43" cy="25" rx="5" ry="11" transform="rotate(42 43 25)"/><path d="M26 30 C15 30 9 34 9 40 C9 47 16 49 21 49 L31 49 C37 49 42 46 42 40 C42 34 37 30 26 30 Z"/></g></svg>';
+  var slapQuips = [
+    '脸有点红了呢。','李玉内心毫无波澜。','要不换个角度再来一下？',
+    '他说：你是不是没吃饭。','Yok 已经开始默默记仇。','感觉要肿了，别扇了。',
+    '警告：李家少爷记性好。','这巴掌我替简隋英还给你。','奶窝的粉丝要来揍你了。',
+    '你把手扇麻了没？','李玉：我谢谢你。','再扇下去剧要换主演了。'
+  ];
+  function slapFaceOnce(){
+    slapNum++;
+    slapNumEl.textContent = slapNum;
+    var h = document.createElement('div'); h.className = 'slap-hand';
+    h.innerHTML = slapHandSVG; slapFace.appendChild(h);
+    var w = document.createElement('div'); w.className = 'slap-hitword';
+    w.textContent = '啪！'; slapFace.appendChild(w);
+    slapFace.classList.add('shaken');
+    setTimeout(function(){ slapFace.classList.remove('shaken'); h.remove(); w.remove(); }, 460);
+    slapRed.classList.add('show');
+    clearTimeout(slapFace._rt);
+    slapFace._rt = setTimeout(function(){ slapRed.classList.remove('show'); }, 620);
+    updateSlapEmote();
+    slapQuip.textContent = '「' + slapQuips[Math.floor(Math.random()*slapQuips.length)] + '」';
+    if(slapNum === 6) showToast('李玉皱起了眉头');
+    if(slapNum === 15) showToast('脸已经肿了，别扇了吧');
+    if(slapNum === 30) showToast('李玉眼角泛起泪光，你要负责');
+    if(slapNum === 50) showToast('李玉晕过去了，快住手！');
+  }
+  function updateSlapEmote(){
+    var t = '';
+    if(slapNum >= 50) t = '（×_×）';
+    else if(slapNum >= 30) t = '(＞﹏＜)';
+    else if(slapNum >= 15) t = '(/ // /)';
+    else if(slapNum >= 6) t = '(＞_＜)';
+    slapEmote.textContent = t;
+    slapEmote.classList.toggle('show', !!t);
+  }
+  slapFace.addEventListener('click', slapFaceOnce);
+  slapFace.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') slapFaceOnce(); });
+  document.getElementById('slapReset').addEventListener('click', function(){
+    slapNum = 0; slapNumEl.textContent = 0;
+    slapEmote.classList.remove('show'); slapRed.classList.remove('show');
+    slapQuip.textContent = '好了，重新开始。'; showToast('巴掌数已清零');
+  });
+
+  /* ---- 摸简隋英胸肌小游戏 ---- */
+  var muscleFace = document.getElementById('muscleFace');
+  var muscleImg = document.getElementById('muscleImg');
+  var muscleHeart = document.getElementById('muscleHeart');
+  var muscleNum = 0;
+  var muscleNumEl = document.getElementById('muscleNum');
+  var muscleQuip = document.getElementById('muscleQuip');
+  var muscleRevealed = false;
+  var grabHandSVG = '<svg viewBox="0 0 48 48" style="width:66px;height:66px"><g fill="#f0c9a4" stroke="#cf9a6f" stroke-width="1.2"><path d="M9 30 C5 26 3 21 4 16 C4 13 7 12 9 14 C11 16 11 21 11 25 Z"/><rect x="16" y="4" width="6" height="17" rx="3"/><rect x="24" y="2" width="6" height="18" rx="3"/><rect x="32" y="4" width="6" height="17" rx="3"/><rect x="39" y="10" width="5" height="12" rx="2.5"/><path d="M14 32 C14 25 17 22 23 22 L34 22 C40 22 42 26 42 31 C42 39 38 43 30 43 L22 43 C16 43 14 39 14 32 Z"/></g></svg>';
+  var muscleQuips = [
+    '这胸肌，练得真不赖。','手感不错吧？','简隋英脸红了。',
+    '再摸下去他要害羞了。','肌肉很结实，好评。','这是粉丝福利环节。',
+    '手别抖，大胆摸。','Bank 说：那是我健身的成果。','小心被他发现。'
+  ];
+  function playMuscle(x,y){
+    muscleNum++;
+    muscleNumEl.textContent = muscleNum;
+    if(!muscleRevealed){
+      muscleImg.src = 'assets/bank_muscle.png';
+      muscleImg.alt = '简隋英（Bank Artit 饰演）露胸肌';
+      muscleRevealed = true;
+      muscleHeart.classList.add('show');
+    }
+    var layer = document.getElementById('fxLayer');
+    var h = document.createElement('div'); h.className = 'muscle-hand';
+    h.style.left = x + 'px'; h.style.top = y + 'px';
+    h.innerHTML = grabHandSVG;
+    layer.appendChild(h);
+    setTimeout(function(){ h.remove(); }, 650);
+    muscleQuip.textContent = '「' + muscleQuips[Math.floor(Math.random()*muscleQuips.length)] + '」';
+    if(muscleNum === 10) showToast('胸肌要被你摸红了，手下留情');
+    if(muscleNum === 30) showToast('简隋英：好了好了，我穿了');
+  }
+  muscleFace.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+      var r = muscleFace.getBoundingClientRect();
+      playMuscle(r.left + r.width/2, r.top + r.height/3);
+    }
+  });
+  document.getElementById('muscleReset').addEventListener('click', function(){
+    muscleNum = 0; muscleNumEl.textContent = 0;
+    muscleImg.src = 'assets/bank_dressed.png';
+    muscleImg.alt = '简隋英（Bank Artit 饰演）穿好衣服';
+    muscleRevealed = false;
+    muscleHeart.classList.remove('show');
+    muscleQuip.textContent = '好，衣服穿回来了。'; showToast('简隋英把衣服穿好了');
+  });
+
+  /* ---- 滚动揭示 ---- */
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

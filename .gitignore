@@ -1,0 +1,9 @@
+# 自检产物
+_shots/
+_shots_tmp/
+
+# 本地下载脚本
+*.py
+
+# 中文名源码（Pages 入口为 index.html）
+fool-in-love应援站.html
